@@ -28,5 +28,6 @@ urlpatterns = [
     path('', home_page),
 
     path('bug/', include('bug.urls')),
-    path('project/', include('project.urls'))
+    path('project/', include('project.urls')),
+    path('activity/', include('activity.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

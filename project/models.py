@@ -8,11 +8,6 @@ from django.db.models import Q
     
 class Project(models.Model):
 
-    #
-    # constants
-    #
-
-    Author = settings.AUTH_USER_MODEL
 
     #
     # fields of the model
@@ -22,7 +17,7 @@ class Project(models.Model):
     name         = models.CharField(max_length=70)
     description  = models.TextField()
 
-    author       = models.ForeignKey(Author, null=True, on_delete=models.SET_NULL, related_name='project_authors')
+    author       = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL, related_name='project_authors')
 
     created_on   = models.DateTimeField(auto_now_add=True)
     updated_on   = models.DateTimeField(auto_now=True)

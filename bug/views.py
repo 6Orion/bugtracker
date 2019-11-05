@@ -5,13 +5,14 @@ from django.shortcuts import redirect
 
 from .models import Bug
 from .forms import BugModelForm
+from activity.models import Activity
 
 # Create your views here.
 
 def detail(request, id):
     obj = get_object_or_404(Bug, id = id)
-    
-    context = {"page_title": f"Details", "detail":True, "object": obj}
+    activities = obj.activities.all()
+    context = {"page_title": f"Details", "detail":True, "object": obj, "activities":activities}
     template = "bug/detail.html"
     return render(request, template, context)
 
@@ -21,7 +22,6 @@ def create(request):
     if form.is_valid():
         obj = form.save(commit=False)
         obj.author = request.user
-        print(request.user)
         obj.save()
         form = BugModelForm
         return redirect("/")

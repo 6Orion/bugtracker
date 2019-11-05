@@ -38,8 +38,6 @@ class BugQuerySet(models.QuerySet):
 
 class Bug(models.Model):
 
-    Author = settings.AUTH_USER_MODEL
-
     # constants of the model
     
     CATEGORY = [
@@ -94,11 +92,11 @@ class Bug(models.Model):
     created_on   = models.DateTimeField(auto_now_add=True)
     updated_on   = models.DateTimeField(auto_now=True)
 
-    author       = models.ForeignKey(Author, null=True, on_delete=models.SET_NULL, related_name='bug_authors')
-    assigned_to  = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL, related_name="assigned_to")
+    author       = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL, related_name='bugs_author')
+    assigned_to  = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL, related_name="bugs_assigned_to")
     project      = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="projects")
 
-    summary      = models.CharField(max_length=240)
+    summary      = models.CharField(max_length=120)
     description  = models.TextField(null=True, blank=True)
     # image        = models.ImageField(upload_to='image/', blank=True, null=True)
 

@@ -1,0 +1,38 @@
+{% block activity_list %}
+<div class="row">
+  <div class="col-12">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Activities for this bug</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">     
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Author</th>
+                <th colspan="4">Summary</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for object in query %}
+              <tr>
+                <td>{{ object.id }}</td>
+                <td><a href="/users/{{ object.author }}">{{ object.author }}</a></td>
+                <td colspan="4"><a href="/activity/{{ object.id }}">{{ object.summary }}</a></td>
+              </tr>
+              {% endfor %} 
+            </tbody>
+          </table>
+        </div>
+        {% if request.user.is_authenticated and detail %}
+          <a href="/activity/create/{{ object.id }}" class="btn btn-primary btn-circle">
+            <i class="fas fa-plus"></i>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

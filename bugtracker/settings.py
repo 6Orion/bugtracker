@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'bug',
+    'users',
     'project',
+    'bug',
+    'activity',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +58,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'bugtracker.urls'
 
 LOGIN_URL = ''
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 TEMPLATES = [
     {

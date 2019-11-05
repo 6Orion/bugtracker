@@ -15,8 +15,12 @@
     {% include "project/detail_table.html" %}
 
     {% if request.user.is_authenticated and detail %}
-    <a href="/project/{{ object.id }}/edit" class="btn btn-primary">Edit</a>
-    <a href="/project/{{ object.id }}/delete" class="btn btn-primary">Delete</a>
+    <a href="/project/{{ object.id }}/edit" class="btn btn-primary btn-circle">
+      <i class="fa fa-edit"></i>
+    </a>
+    <a href="/project/{{ object.id }}/delete" class="btn btn-primary btn-circle">
+      <i class="fa fa-trash"></i>
+    </a>
     {% endif %}
   </div>
 </div>
