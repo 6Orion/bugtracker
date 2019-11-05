@@ -6,6 +6,6 @@ from bug.models import Bug
 
 def home_page(request):
     query = Bug.objects.all()
-    context = {"page_title":"Homepage", "buglist":query,}
+    context = {"appname":"bug", "page_title":"Homepage", "query":query,}
     template = "home.html"
     return render(request, template, context)

@@ -6,6 +6,10 @@
 
 <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
 
-{% include "bug/list.html" with queryset=buglist %}
+{% if request.user.is_authenticated %}
+<a href="/{{ appname }}/create" class="btn btn-primary mb-4">Add new {{ appname }}</a>
+{% endif %}
+
+{% include appname|add:"/list.html" with query=query %}
 
 {% endblock %}

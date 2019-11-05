@@ -1,11 +1,11 @@
 from django import forms
 
-from .models import Bug
+from .models import Project
 
-class BugModelForm(forms.ModelForm):
+class ProjectModelForm(forms.ModelForm):
     class Meta:
-        model = Bug
-        fields = ['assigned_to', 'summary', 'description', 'category', 'view_status', 'priority', 'resolution', 'severity', 'project']
+        model = Project
+        fields = ['name', 'description']
     
         # example of additional editing capabilities for ModelForm class
         

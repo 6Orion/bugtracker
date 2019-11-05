@@ -9,9 +9,9 @@ from .forms import BugModelForm
 # Create your views here.
 
 def detail(request, id):
-    bug = get_object_or_404(Bug, id = id)
+    obj = get_object_or_404(Bug, id = id)
     
-    context = {"page_title": f"Bug No. {id} - Details", "object": bug}
+    context = {"page_title": f"Details", "detail":True, "object": obj}
     template = "bug/detail.html"
     return render(request, template, context)
 
@@ -25,17 +25,28 @@ def create(request):
         obj.save()
         form = BugModelForm
         return redirect("/")
-    context = {"page_title":"Create a bug", "form":form}
-    template = "bug/create.html"
+    context = {"page_title":"Add new bug", "form":form}
+    template = "bug/form.html"
     return render(request, template, context)
 
+@login_required
 def edit(request, id):
-    context = {"page_title": f"Bug No. {id} - Edit entry"}
-    template = "bug/edit.html"
+    obj = get_object_or_404(Bug, id = id)
+    form = BugModelForm(request.POST or None, instance = obj)
+    if form.is_valid():
+        form.save()
+        return redirect("/")
+    context = {"page_title": f"Edit entry", "form":form}
+    template = "bug/form.html"
     return render(request, template, context)
 
+@login_required
 def delete(request, id):
-    context = {"page_title": f"Bug No. {id} - Delete entry",}
+    obj = get_object_or_404(Bug, id = id)
+    if request.method == "POST":
+        obj.delete()
+        return redirect("/")
+    context = {"page_title": f"Delete entry", "object":obj}
     template = "bug/delete.html"
     return render(request, template, context)
 

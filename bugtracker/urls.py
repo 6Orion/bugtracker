@@ -28,4 +28,5 @@ urlpatterns = [
     path('', home_page),
 
     path('bug/', include('bug.urls')),
+    path('project/', include('project.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

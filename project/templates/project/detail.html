@@ -8,15 +8,15 @@
 <!-- DataTales -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Bug details: {{ object.id }}</h6>
+    <h6 class="m-0 font-weight-bold text-primary">Project details: {{ object.id }}</h6>
   </div>
   <div class="card-body">
     
-    {% include "bug/detail_table.html" %}
+    {% include "project/detail_table.html" %}
 
     {% if request.user.is_authenticated and detail %}
-    <a href="/bug/{{ object.id }}/edit" class="btn btn-primary">Edit</a>
-    <a href="/bug/{{ object.id }}/delete" class="btn btn-primary">Delete</a>
+    <a href="/project/{{ object.id }}/edit" class="btn btn-primary">Edit</a>
+    <a href="/project/{{ object.id }}/delete" class="btn btn-primary">Delete</a>
     {% endif %}
   </div>
 </div>

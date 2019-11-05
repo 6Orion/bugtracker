@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Page Heading -->
+<h1 class="h3 mb-4 text-gray-800">{{ page_title }}</h1>
+
+<!-- DataTales -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">ID {{ object.id }} - {{ object.name }}</h6>
+  </div>
+  <div class="card-body">
+    
+    {% include "project/detail_table.html" %}
+
+    <p>Are you sure you want to delete this project? All bugs associated with it will be deleted too!</p>
+    <form action="." method="POST">
+        <button type="submit" value="submit" class="btn btn-primary btn-user btn-block">Yes, delete this project</button>    
+    </form>
+  </div>
+</div>
+
+{% endblock  %}

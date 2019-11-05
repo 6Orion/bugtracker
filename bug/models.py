@@ -4,6 +4,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db.models import Q
 
+from project.models import Project
+
 
 # Create your models here.
 
@@ -12,19 +14,18 @@ class BugManager(models.Manager):
         # BlogPost.objects.all()
         return BugQuerySet(self.model, using=self._db)
     
-    def published(self):
-        return self.get_queryset().published()
+    def open(self):
+        return self.get_queryset().open()
 
     def search(self, query=None):
         if query == None:
             return self.get_queryset().none()
-        return self.get_queryset().published().search(query)
+        return self.get_queryset().open().search(query)
 
 class BugQuerySet(models.QuerySet):
-    def published(self):
+    def open(self):
         # BlogPost.objects.all()
-        now = timezone.now()
-        return self.filter(publish_date__lte=now, published=True)
+        return self.filter(publish_date__lte=2)
 
     def search(self, query):
         lookup = (Q(title__icontains=query) | 
@@ -63,9 +64,9 @@ class Bug(models.Model):
 
     RESOLUTION = [
         ('0', 'Open'),
-        ('1', 'Fixed'),
-        ('2', 'Reopened'),
-        ('3', 'Unable to reproduce'),
+        ('1', 'Reopened'),
+        ('2', 'Unable to reproduce'),
+        ('3', 'Closed'),
         ('4', 'Suspended'),
     ]
 
@@ -83,7 +84,7 @@ class Bug(models.Model):
     # fields of the model
     
     # id = models.IntegerField() # pk
-    # project      = models.ForeignKey()
+    
     category     = models.CharField(max_length=10, choices=CATEGORY, default='OTHER')
     view_status  = models.CharField(max_length=1, choices=VIEW_STATUS, default='1')
     priority     = models.CharField(max_length=1, choices=PRIORITY, default='0')
@@ -93,8 +94,9 @@ class Bug(models.Model):
     created_on   = models.DateTimeField(auto_now_add=True)
     updated_on   = models.DateTimeField(auto_now=True)
 
-    author       = models.ForeignKey(Author, null=True, on_delete=models.SET_NULL, related_name='authors')
+    author       = models.ForeignKey(Author, null=True, on_delete=models.SET_NULL, related_name='bug_authors')
     assigned_to  = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL, related_name="assigned_to")
+    project      = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="projects")
 
     summary      = models.CharField(max_length=240)
     description  = models.TextField(null=True, blank=True)

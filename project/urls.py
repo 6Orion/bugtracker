@@ -5,17 +5,14 @@ from .views import (
     create,
     edit,
     delete,
-)
-
-from bugtracker.views import (
-    home_page,
+    project_list,
 )
 
 urlpatterns = [
+    path("", project_list),
     path("<int:id>/", detail),
     path("<int:id>/edit/", edit),
     path("<int:id>/delete/", delete),
 
     path("create/", create),
-    path("list/", home_page),
-] 
+]

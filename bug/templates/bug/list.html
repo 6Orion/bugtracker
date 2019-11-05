@@ -1,37 +1,75 @@
 {% block list %}
 <!-- DataTales -->
-<div class="card shadow mb-4">
-  <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">All bugs</h6>
-  </div>
-  <div class="card-body">
-    <div class="table-responsive">     
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Summary</th>
-            <th>Category</th>
-            <th>Resolution</th>
-            <th>Severity</th>
-            <th>Priority</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for object in queryset %}
-          <tr>
-            <td>{{ object.id }}</td>
-            <td><a href="/bug/{{ object.id }}">{{ object.summary }}</a></td>
-            <td>{{ object.get_category_display }}</td>
-            <td>{{ object.get_resolution_display }}</td>
-            <td>{{ object.get_severity_display }}</td>
-            <td>{{ object.get_priority_display }}</td>
-          </tr>
-          {% endfor %} 
-        </tbody>
-      </table>
+<div class="row">
+  <div class="col-12">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">All bugs</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">     
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Summary</th>
+                <th>Project</th>
+                <th>Resolution</th>
+                <th>Severity</th>
+                <th>Priority</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for object in query %}
+              <tr>
+                <td>{{ object.id }}</td>
+                <td><a href="/bug/{{ object.id }}">{{ object.summary }}</a></td>
+                <td><a href="/project/{{ object.project.id }}">{{ object.project }}</a></td>
+                <td>{{ object.get_resolution_display }}</td>
+                <td>{{ object.get_severity_display }}</td>
+                <td>{{ object.get_priority_display }}</td>
+              </tr>
+              {% endfor %} 
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
+  <!-- <div class="col-lg-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">All bugs</h6>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">     
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Summary</th>
+                  <th>Project</th>
+                  <th>Resolution</th>
+                  <th>Severity</th>
+                  <th>Priority</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for object in query %}
+                <tr>
+                  <td>{{ object.id }}</td>
+                  <td><a href="/bug/{{ object.id }}">{{ object.summary }}</a></td>
+                  <td><a href="/project/{{ object.project.id }}">{{ object.project }}</a></td>
+                  <td>{{ object.get_resolution_display }}</td>
+                  <td>{{ object.get_severity_display }}</td>
+                  <td>{{ object.get_priority_display }}</td>
+                </tr>
+                {% endfor %} 
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div> -->
 </div>
-
 {% endblock %}

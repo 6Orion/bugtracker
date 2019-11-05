@@ -1,0 +1,45 @@
+    <div class="table-responsive mb-3">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <tbody>
+          <tr>
+            <th>ID:</th>
+            <td>{{ object.id }}</td>
+            <th>Summary:</th>
+            <td colspan="5">{{ object.summary }}</td>
+          </tr>
+          <tr>
+            <th>Author:</th>
+            <td colspan="3">{{ object.author }}</td>
+            <th>Assigned to:</th>
+            <td colspan="3">{{ object.assigned_to }}</td>
+          </tr>
+          <tr>
+            <th>Project:</th>
+            <td><a href="/project/{{ object.project }}">{{ object.project }}</a></td>
+            <th>Category:</th>
+            <td>{{ object.get_category_display }}</td>
+            <th>Priority:</th>
+            <td>{{ object.get_priority_display }}</td>
+            <th>View status:</th>
+            <td>{{ object.get_view_status_display }}</td>
+          </tr>
+          <tr>
+            <th>Resolution:</th>
+            <td>{{ object.get_resolution_display }}</td>
+            <th>Severity:</th>
+            <td>{{ object.get_severity_display }}</td>
+            <th>Created on:</th>
+            <td>{{ object.created_on }}</td>
+            <th>Last updated on:</th>
+            <td>{{ object.updated_on }}</td>
+          </tr> 
+          <tr>
+            <th colspan="8">Description:</td>
+          </tr>    
+          <tr>
+            <td colspan="8">{{ object.description|linebreaks }}</td>
+          </tr> 
+        </tbody>
+      </table>
+    </div>
+    <hr>
