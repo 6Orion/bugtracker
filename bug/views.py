@@ -12,7 +12,7 @@ from activity.models import Activity
 def detail(request, id):
     obj = get_object_or_404(Bug, id = id)
     activities = obj.activities.all()
-    context = {"page_title": f"Details", "detail":True, "object": obj, "activities":activities}
+    context = {"page_title": f"Bug ID {id} - Details", "detail":True, "object": obj, "activities":activities}
     template = "bug/detail.html"
     return render(request, template, context)
 
@@ -36,7 +36,7 @@ def edit(request, id):
     if form.is_valid():
         form.save()
         return redirect("/")
-    context = {"page_title": f"Edit entry", "form":form}
+    context = {"page_title": f"Bug ID {id} - Edit entry", "form":form}
     template = "bug/form.html"
     return render(request, template, context)
 
@@ -46,7 +46,7 @@ def delete(request, id):
     if request.method == "POST":
         obj.delete()
         return redirect("/")
-    context = {"page_title": f"Delete entry", "object":obj}
+    context = {"page_title": f"Bug ID {id} - Delete entry", "object":obj}
     template = "bug/delete.html"
     return render(request, template, context)
 

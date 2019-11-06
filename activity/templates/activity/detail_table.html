@@ -1,0 +1,39 @@
+    <div class="table-responsive mb-3">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <tbody>
+          <tr>
+            <th>ID:</th>
+            <td colspan="2">{{ object.id }}</td>
+          </tr>
+          <tr>
+            <th>Parent bug:</th>
+            <td colspan="2"><a href="/bug/{{ object.bug.id }}">{{ object.bug }}</a></td>
+          </tr>
+          <tr>
+            <th>Project:</th>
+            <td colspan="2"><a href="/project/{{ object.bug.project.id }}">{{ object.bug.project }}</a></td>
+          </tr>
+          <tr>
+            <th>Activity author:</th>
+            <td colspan="2">{{ object.author }}</td>
+          </tr> 
+          <tr>
+            <th>Created on:</th>
+            <td colspan="2">{{ object.created_on }}</td>
+          </tr>
+          <tr>
+            <th>Last updated on:</th>
+            <td colspan="2">{{ object.updated_on }}</td>
+          </tr>
+          <tr>
+            <th>Summary:</th>
+            <td colspan="2">{{ object.summary }}</td>
+          </tr> 
+          <tr>
+            <th>Content:</th>
+            <td colspan="2">{{ object.content|linebreaks }}</td>
+          </tr> 
+        </tbody>
+      </table>
+    </div>
+    <hr>

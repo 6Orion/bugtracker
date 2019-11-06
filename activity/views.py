@@ -7,12 +7,29 @@ from .models import Activity
 from .forms import ActivityModelForm
 from bug.models import Bug
 
+
+# Constants
+
+# String representation of app's name in lowercase
+appname_lower = 'activity'
+
+# String representation of app's name with first letter capitalized 
+appname_caps = 'Activity'
+
+# Main model of this app
+app_model = Activity
+
+# Main form of this app
+app_form = ActivityModelForm
+
+
+
 # Create your views here.
 
 @login_required
 def create(request, bug_id):
     bug = get_object_or_404(Bug, id = bug_id)
-    form = ActivityModelForm(request.POST or None)
+    form = app_form(request.POST or None)
     if form.is_valid():
         obj = form.save(commit=False)
         obj.author = request.user
@@ -20,7 +37,55 @@ def create(request, bug_id):
         obj.save()
         return redirect(f"/bug/{bug_id}")
     context = {"page_title":f"Add new activity for bug {bug_id}", "form":form, "bug_id":bug_id}
-    template = "activity/form.html"
+    template = f"{appname_lower}/form.html"
     return render(request, template, context)
+
+def detail(request, id):
+    obj = get_object_or_404(app_model, id = id)
+
+    template = f"{appname_lower}/detail.html"
+    context = {
+                "page_title": f"{appname_caps} ID {id} - Details",
+                "object": obj,
+                "detail": True,
+                }
+    return render(request, template, context)
+
+def lists(request):
+    query = Activity.objects.all()
+
+    template = f"{appname_lower}/list_view.html"
+    context = {
+                "page_title": f"{appname_caps} list",
+                "main_content": True,
+                "query": query,
+                }
+    return render(request, template, context)
+
+@login_required
+def edit(request, id):
+    obj = get_object_or_404(app_model, id = id)
+    form = app_form(request.POST or None, instance = obj)
+    if form.is_valid():
+        form.save()
+        return redirect(f"/bug/{obj.bug.id}")
+    
+    template = f"{appname_lower}/form.html"
+    context = {
+                "page_title": f"{appname_caps} ID {id} - Edit entry", 
+                "form": form,
+                }
+    return render(request, template, context)
+
+@login_required
+def delete(request, id):
+    obj = get_object_or_404(app_model, id = id)
+    if request.method == "POST":
+        obj.delete()
+        return redirect(f"/{appname_lower}/{obj.bug.id}")
+    context = {"page_title": f"{appname_caps} ID {id} - Delete entry", "object":obj}
+    template = f"{appname_lower}/delete.html"
+    return render(request, template, context)
+    
 
 

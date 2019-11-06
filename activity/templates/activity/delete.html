@@ -12,16 +12,11 @@
   </div>
   <div class="card-body">
     
-    {% include "project/detail_table.html" %}
+    {% include "activity/detail_table.html" %}
 
-    {% if request.user.is_authenticated and detail %}
-    <a href="/project/{{ object.id }}/edit" class="btn btn-primary btn-circle">
-      <i class="fa fa-edit"></i>
-    </a>
-    <a href="/project/{{ object.id }}/delete" class="btn btn-primary btn-circle">
-      <i class="fa fa-trash"></i>
-    </a>
-    {% endif %}
+    <form action="." method="POST">
+        <button type="submit" value="submit" class="btn btn-danger btn-user btn-block">Delete this entry</button>    
+    </form>
   </div>
 </div>
 

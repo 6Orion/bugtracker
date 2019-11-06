@@ -1,7 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
-from django.shortcuts import redirect
 
 from .models import Project
 from .forms import ProjectModelForm
@@ -19,7 +18,7 @@ def project_list(request):
 
 def detail(request, id):
     obj = get_object_or_404(Project, id = id)
-    context = {"page_title": f"Details", "detail":True, "object": obj}
+    context = {"page_title": f"Project ID {id} - Details", "detail":True, "object": obj}
     template = "project/detail.html"
     return render(request, template, context)
 
@@ -44,7 +43,7 @@ def edit(request, id):
     if form.is_valid():
         form.save()
         return redirect("/project/")
-    context = {"page_title": f"Edit project", "form":form}
+    context = {"page_title": f"Project ID {id} - Edit entry", "form":form}
     template = "project/form.html"
     return render(request, template, context)
 
@@ -54,6 +53,6 @@ def delete(request, id):
     if request.method == "POST":
         obj.delete()
         return redirect("/project/")
-    context = {"page_title": f"Delete project", "object":obj}
+    context = {"page_title": f"Project ID {id} - Delete entry", "object":obj}
     template = "project/delete.html"
     return render(request, template, context)
