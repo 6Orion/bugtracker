@@ -17,9 +17,18 @@ def handler404(request, *args, **argv):
 
 from bug.models import Bug
 
+
 def home_page(request):
     query = Bug.objects.all()
-    context = {"appname":"bug", "page_title":"Homepage", "query":query,}
+    
     template = "home.html"
+    context = {
+                "appname_lower": "bug", 
+                "appname_caps": "Bug", 
+                "page_heading": "Dashboard",
+                "page_title": "Bug list", 
+                "query": query,
+                }
+    
     return render(request, template, context)
 

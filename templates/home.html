@@ -1,15 +1,11 @@
-{% extends "base.html" %}
+{% extends "list.html" %}
 
-{% block content %}
-<!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">{{ page_title }}</h1>
+{% block heading %}
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">{{ page_heading }}</h1>
 
-<p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+    <p class="mb-4">Welcome to BugTracker dashboard. If you find some bugs *ba-dum-tssss* or wish to contact me, please find my contact details <a target="_blank" href="http://igorpavlovic.com">here</a>.</p>
 
-{% if request.user.is_authenticated %}
-<a href="/{{ appname }}/create" class="btn btn-primary mb-4">Add new {{ appname }}</a>
-{% endif %}
+{% endblock heading %}
 
-{% include appname|add:"/list.html" with query=query %}
 
-{% endblock %}

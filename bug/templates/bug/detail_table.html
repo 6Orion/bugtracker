@@ -9,13 +9,14 @@
           </tr>
           <tr>
             <th>Author:</th>
-            <td colspan="3">{{ object.author }}</td>
-            <th>Assigned to:</th>
-            <td colspan="3">{{ object.assigned_to }}</td>
+            <td>{{ object.author }}</td>
+            <th>Project:</th>
+            <td colspan="6"><a href="/project/{{ object.project.id }}">{{ object.project }}</a></td>
+            
           </tr>
           <tr>
-            <th>Project:</th>
-            <td><a href="/project/{{ object.project.id }}">{{ object.project }}</a></td>
+            <th>Assigned to:</th>
+            <td>{{ object.assigned_to }}</td>
             <th>Category:</th>
             <td>{{ object.get_category_display }}</td>
             <th>Priority:</th>

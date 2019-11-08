@@ -5,7 +5,7 @@ from .views import (
     create,
     edit,
     delete,
-    lists,
+    list_view,
 )
 
 urlpatterns = [
@@ -15,5 +15,5 @@ urlpatterns = [
 
     path("create/<int:bug_id>", create),
 
-    path("list/", lists),
+    path("", list_view),
 ] 

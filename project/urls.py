@@ -5,11 +5,12 @@ from .views import (
     create,
     edit,
     delete,
-    project_list,
+    list_view,
 )
 
 urlpatterns = [
-    path("", project_list),
+    path("", list_view),
+    
     path("<int:id>/", detail),
     path("<int:id>/edit/", edit),
     path("<int:id>/delete/", delete),

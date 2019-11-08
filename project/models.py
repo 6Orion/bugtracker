@@ -50,3 +50,5 @@ class Project(models.Model):
 
     def get_delete_url(self):
         return f"{self.get_absolute_url()}/delete"
+
+    

@@ -108,7 +108,7 @@ class Bug(models.Model):
     # special methods
 
     def __str__(self):
-        return f"{self.id} - {self.summary}"
+        return f"{self.summary}"
 
 
     def get_absolute_url(self):

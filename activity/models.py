@@ -30,3 +30,15 @@ class Activity(models.Model):
     # special methods
     def __str__(self):
         return f"{self.bug.project} - {self.bug} - {self.summary}"
+
+    
+    def get_absolute_url(self):
+        return f"/activity/{self.id}"
+
+
+    def get_edit_url(self):
+        return f"{self.get_absolute_url()}/edit"
+    
+
+    def get_delete_url(self):
+        return f"{self.get_absolute_url()}/delete"

@@ -1,0 +1,38 @@
+{% extends "base/content.html" %}
+
+{% block content %}
+    
+    {% load formcss %}
+
+    {% include appname_lower|add:"/detail_table.html" %}
+
+    {% if request.user.is_authenticated and detail %}
+    <a href="{{ object.get_edit_url }}" class="btn btn-primary btn-circle">
+      <i class="fa fa-edit"></i>
+    </a>
+    <a href="{{ object.get_delete_url }}" class="btn btn-danger btn-circle">
+      <i class="fa fa-trash"></i>
+    </a>
+    {% endif %}
+
+{% endblock content %}
+
+  
+{% block list %}
+    {% if list_to_include %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">{{ list_name }}</h6>
+        </div>        
+        <div class="card-body">
+        
+          <!-- List of child elements -->
+        {% include list_to_include %}
+
+      </div>
+    </div>
+    {% endif %}
+{% endblock list %}
+
+
+

@@ -26,6 +26,34 @@ app_form = ActivityModelForm
 
 # Create your views here.
 
+def list_view(request):
+    query = app_model.objects.all()
+
+    template = "list.html"
+    context = {
+                "appname_lower": appname_lower,
+                "appname_caps": appname_caps,
+                "page_title": f"{appname_caps} list",
+                "main_content": True,
+                "query": query,
+                }
+    return render(request, template, context)
+
+
+def detail(request, id):
+    obj = get_object_or_404(app_model, id = id)
+
+    template = "detail.html"
+    context = {
+                "appname_lower": appname_lower,
+                "appname_caps": appname_caps,        
+                "page_title": f"{appname_caps} ID {id} - Details",
+                "object": obj,
+
+                }
+    return render(request, template, context)
+
+
 @login_required
 def create(request, bug_id):
     bug = get_object_or_404(Bug, id = bug_id)
@@ -36,31 +64,17 @@ def create(request, bug_id):
         obj.bug = bug
         obj.save()
         return redirect(f"/bug/{bug_id}")
-    context = {"page_title":f"Add new activity for bug {bug_id}", "form":form, "bug_id":bug_id}
-    template = f"{appname_lower}/form.html"
-    return render(request, template, context)
 
-def detail(request, id):
-    obj = get_object_or_404(app_model, id = id)
-
-    template = f"{appname_lower}/detail.html"
+    template = "form.html"
     context = {
-                "page_title": f"{appname_caps} ID {id} - Details",
-                "object": obj,
-                "detail": True,
+                "appname_lower": appname_lower,
+                "appname_caps": appname_caps,
+                "page_title":f"Add new activity for bug {bug_id}", 
+                "form":form, 
+                "bug_id":bug_id,
                 }
     return render(request, template, context)
 
-def lists(request):
-    query = Activity.objects.all()
-
-    template = f"{appname_lower}/list_view.html"
-    context = {
-                "page_title": f"{appname_caps} list",
-                "main_content": True,
-                "query": query,
-                }
-    return render(request, template, context)
 
 @login_required
 def edit(request, id):
@@ -70,12 +84,15 @@ def edit(request, id):
         form.save()
         return redirect(f"/bug/{obj.bug.id}")
     
-    template = f"{appname_lower}/form.html"
+    template = "form.html"
     context = {
+                "appname_lower": appname_lower,
+                "appname_caps": appname_caps,
                 "page_title": f"{appname_caps} ID {id} - Edit entry", 
                 "form": form,
                 }
     return render(request, template, context)
+
 
 @login_required
 def delete(request, id):
@@ -83,8 +100,14 @@ def delete(request, id):
     if request.method == "POST":
         obj.delete()
         return redirect(f"/{appname_lower}/{obj.bug.id}")
-    context = {"page_title": f"{appname_caps} ID {id} - Delete entry", "object":obj}
+    
     template = f"{appname_lower}/delete.html"
+    context = {
+                "appname_lower": appname_lower,
+                "appname_caps": appname_caps,
+                "page_title": f"{appname_caps} ID {id} - Delete entry", 
+                "object":obj,
+                }
     return render(request, template, context)
     
 
