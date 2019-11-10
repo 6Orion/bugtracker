@@ -6,6 +6,7 @@ from .views import (
     edit,
     delete,
     list_view,
+    search,
 )
 
 
@@ -16,5 +17,7 @@ urlpatterns = [
     path("<int:id>/edit/", edit),
     path("<int:id>/delete/", delete),
 
-    path("create/", create),    
+    path("create/", create), 
+
+    path("search/", search),    
 ] 

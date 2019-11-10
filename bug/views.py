@@ -36,6 +36,7 @@ def list_view(request):
                 }
     return render(request, template, context)
 
+
 def detail(request, id):
     obj = get_object_or_404(app_model, id = id)
     activities = obj.activities.all()
@@ -71,7 +72,7 @@ def create(request):
     context = {
                 "appname_lower": appname_lower,
                 "appname_caps": appname_caps,
-                "form_custom_template": True,
+                "custom_form_template": True,
                 "page_title": f"Add new {appname_lower}", 
                 "form":form,
                 }
@@ -110,6 +111,26 @@ def delete(request, id):
                 "appname_caps": appname_caps,
                 "page_title": f"{appname_caps} ID {id} - Delete entry", 
                 "object":obj,
+                }
+    return render(request, template, context)
+
+
+
+def search(request):
+    q = request.GET.get("q", None)
+    
+    if q is not None:
+        query = Bug.objects.search(query=q)
+    else:
+        query = None
+
+    template = "list.html"
+    context = {
+                "appname_lower": appname_lower,
+                "appname_caps": appname_caps,
+                "page_title": f"{appname_caps} list",
+                "main_content": True,
+                "query": query
                 }
     return render(request, template, context)
 

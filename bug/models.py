@@ -7,7 +7,7 @@ from django.db.models import Q
 from project.models import Project
 
 
-# Create your models here.
+# Model managers
 
 class BugManager(models.Manager):
     def get_queryset(self):
@@ -20,21 +20,26 @@ class BugManager(models.Manager):
     def search(self, query=None):
         if query == None:
             return self.get_queryset().none()
-        return self.get_queryset().open().search(query)
+        return self.get_queryset().search(query)
+
+# Query sets
 
 class BugQuerySet(models.QuerySet):
     def open(self):
         # BlogPost.objects.all()
-        return self.filter(publish_date__lte=2)
+        return self.filter(resolution__lte=2)
 
     def search(self, query):
-        lookup = (Q(title__icontains=query) | 
-                  Q(content__icontains=query) |
-                  Q(slug__icontains=query) |
-                  Q(user__first_name__icontains=query) |
-                  Q(user__last_name__icontains=query) |
-                  Q(user__username__icontains=query))
+        lookup = (Q(summary__icontains=query) | 
+                  Q(description__icontains=query) |
+                  Q(category__icontains=query) |
+                  Q(author__first_name__icontains=query) |
+                  Q(author__last_name__icontains=query) |
+                  Q(author__username__icontains=query))
         return self.filter(lookup)   
+
+
+# Models
 
 class Bug(models.Model):
 
