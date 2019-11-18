@@ -17,7 +17,7 @@
             <span class="text">Add new {{ appname_lower }}</span>
         </a> -->
 
-        <a href="/{{ appname_lower }}/create" class="btn btn-primary btn-circle">
+        <a href="/{{ appname_lower }}/create" class="btn btn-primary btn-circle mt-2">
            <i class="fas fa-plus"></i>
         </a>        
     {% endif %}
@@ -28,5 +28,6 @@
 {% block content %}
 
     {% include appname_lower|add:"/list.html" %}
+
 
 {% endblock %}

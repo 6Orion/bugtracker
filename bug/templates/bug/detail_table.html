@@ -1,5 +1,5 @@
     <div class="table-responsive mb-3">
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="detailTable" width="100%" cellspacing="0">
         <tbody>
           <tr>
             <th>ID:</th>
@@ -9,14 +9,14 @@
           </tr>
           <tr>
             <th>Author:</th>
-            <td>{{ object.author }}</td>
+            <td><a href="{{ object.author.get_absolute_url }}">{{ object.author }}</a></td>
             <th>Project:</th>
-            <td colspan="6"><a href="/project/{{ object.project.id }}">{{ object.project }}</a></td>
+            <td colspan="6"><a href="{{ object.project.get_absolute_url }}">{{ object.project }}</a></td>
             
           </tr>
           <tr>
             <th>Assigned to:</th>
-            <td>{{ object.assigned_to }}</td>
+            <td><a href="{{ object.assigned_to.get_absolute_url }}">{{ object.assigned_to }}</a></td>
             <th>Category:</th>
             <td>{{ object.get_category_display }}</td>
             <th>Priority:</th>
@@ -43,4 +43,4 @@
         </tbody>
       </table>
     </div>
-    <hr>
+    

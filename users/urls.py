@@ -4,7 +4,6 @@ from .views import (
     detail,
     create,
     edit,
-    delete,
     list_view,
 )
 
@@ -14,7 +13,6 @@ urlpatterns = [
 
     path("<int:id>/", detail),
     path("<int:id>/edit/", edit),
-    path("<int:id>/delete/", delete),
 
-    path("create/", create),    
+    path("create/", create),     
 ] 

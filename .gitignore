@@ -6,3 +6,6 @@
 
 # Database
 *.sqlite3
+
+# Pipenv.lock
+Pipfile.lock

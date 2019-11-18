@@ -1,0 +1,42 @@
+{% extends "base/content.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12 col-8 mx-auto">
+        
+        {% if query %}
+            <p class="lead">You searched for {{ query }}</p>
+
+            <p class="lead">Project results</p>
+            {% if project_list %}
+                {% include 'project/list.html' with query=project_list %}
+            {% else %}
+                <p>No results</p>
+            {% endif %}
+    
+            <p class="lead">Bug results</p>
+            {% if bug_list.count %}
+                {% include 'bug/list.html' with query=bug_list %}
+            {% else %}
+                <p>No results</p>
+            {% endif %}
+    
+            <p class="lead">Activity results</p>
+            {% if activity_list.count %}
+                {% include 'activity/list.html' with query=activity_list %}
+            {% else %}
+                <p>No results</p>
+            {% endif %}
+
+
+        {% else %}
+            <p class="lead">You haven't provided a search string. Please search again.</p>
+        {% endif %}
+    
+        
+    </div>
+
+</div>
+
+{% endblock %}

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'project',
     'bug',
     'activity',
+    'search',
 ]
 
 MIDDLEWARE = [
