@@ -73,7 +73,11 @@ def detail(request, id):
 
 @login_required
 def create(request):
+<<<<<<< HEAD
     form = app_create_form(request.POST or None, request.FILES or None)
+=======
+    form = app_create_form(request.POST or None)
+>>>>>>> 5278d4fa3b7b1539a89eb2fcc1e0cd3387932f26
     if form.is_valid():
         obj = form.save(commit=False)
         obj.author = request.user
@@ -95,10 +99,18 @@ def create(request):
 @login_required
 def edit(request, id):
     obj = get_object_or_404(app_model, id = id)
+<<<<<<< HEAD
     form = app_edit_form(request.POST or None, request.FILES or None, instance = obj)
     if form.is_valid():
         form.save()
         print(request.POST)
+=======
+    form = app_edit_form(request.POST or None, instance = obj)
+    print(form)
+    print(form.instance)
+    if form.is_valid():
+        form.save()
+>>>>>>> 5278d4fa3b7b1539a89eb2fcc1e0cd3387932f26
         return redirect("/")
 
     template = "form.html"
