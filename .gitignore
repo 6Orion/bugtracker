@@ -6,3 +6,12 @@
 
 # Database
 *.sqlite3
+
+# Pipenv.lock
+Pipfile.lock
+
+# Media
+/media/*
+
+# Static CDN
+/static_cdn_test/*

@@ -1,16 +1,31 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from django.db.models import Q
 
 from bug.models import Bug
 
 # Create your models here.
 
 class ActivityManager(models.Manager):
-    pass
+    def get_queryset(self):
+        # Activity.objects.all()
+        return ActivityQuerySet(self.model, using=self._db)
+
+    def search(self, query=None):
+        if query == None:
+            return self.get_queryset().none()
+        return self.get_queryset().search(query)
 
 class ActivityQuerySet(models.QuerySet):
-    pass
+    def search(self, query):
+        lookup = (Q(summary__icontains=query) | 
+                  Q(content__icontains=query) |
+                  Q(bug__summary__icontains=query) |
+                  Q(author__first_name__icontains=query) |
+                  Q(author__last_name__icontains=query) |
+                  Q(author__username__icontains=query))
+        return self.filter(lookup) 
 
 class Activity(models.Model):
 

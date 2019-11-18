@@ -11,7 +11,7 @@ from project.models import Project
 
 class BugManager(models.Manager):
     def get_queryset(self):
-        # BlogPost.objects.all()
+        # Bug.objects.all()
         return BugQuerySet(self.model, using=self._db)
     
     def open(self):
@@ -26,7 +26,7 @@ class BugManager(models.Manager):
 
 class BugQuerySet(models.QuerySet):
     def open(self):
-        # BlogPost.objects.all()
+        # Bug.objects.all()
         return self.filter(resolution__lte=2)
 
     def search(self, query):
@@ -97,9 +97,9 @@ class Bug(models.Model):
     created_on   = models.DateTimeField(auto_now_add=True)
     updated_on   = models.DateTimeField(auto_now=True)
 
-    author       = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL, related_name='bugs_author')
-    assigned_to  = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL, related_name="bugs_assigned_to")
-    project      = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="projects")
+    author       = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL, related_name='author_of_bugs')
+    assigned_to  = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, on_delete=models.SET_NULL, related_name="assigned_to_bugs")
+    project      = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="project_bugs")
 
     summary      = models.CharField(max_length=120)
     description  = models.TextField(null=True, blank=True)

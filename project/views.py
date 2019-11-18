@@ -4,7 +4,6 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 from .models import Project
 from .forms import ProjectModelForm
-from bug.models import Bug
 # Constants
 
 # String representation of app's name in lowercase
@@ -36,7 +35,6 @@ def list_view(request):
 
 def detail(request, id):
     obj = get_object_or_404(app_model, id = id)
-    bugs = Bug.objects.filter(project = obj)
 
     template = "detail.html"
     context = {
@@ -45,14 +43,20 @@ def detail(request, id):
                 "detail": True,
                 "page_title": f"{appname_caps} ID {id} - Details",
                 "object": obj,
-                
-                # lowercase name of the app to be included as a list of child elements
-                "list_to_include": "bug/list.html",
-                # name/caption of the list
-                "list_name": "Bug list",
-                # query of child elements
-                "query": bugs,
+                "child_list": False,
                 }
+    
+    list_query = obj.project_bugs.all()
+
+    if list_query.count() != 0:
+        context['child_list'] = {
+                                # Lowercase name of the app to be included as a list
+                                "template": "bug/list.html",
+                                # Name/caption of the list
+                                "name": "Bug list",
+                                # Query of child elements
+                                "query": list_query,
+                                }
     return render(request, template, context)
 
 

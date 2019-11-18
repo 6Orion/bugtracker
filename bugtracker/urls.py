@@ -32,4 +32,9 @@ urlpatterns = [
     path('bug/', include('bug.urls')),
     path('project/', include('project.urls')),
     path('activity/', include('activity.urls')),
+    path('users/', include('users.urls')),
+    path('search/', include('search.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+if settings.DEBUG: # new
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
