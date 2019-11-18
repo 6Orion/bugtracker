@@ -153,13 +153,9 @@
 
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ request.user.username }}</span>
-<<<<<<< HEAD
           {% if object.image %}
           <img class="img-profile rounded-circle" src="{{ request.user.image.url }}" width="60px" height="60px">
           {% endif %}
-=======
-          <img class="img-profile rounded-circle" src="{{ request.user.image.url }}" width="60px" height="60px">
->>>>>>> 5278d4fa3b7b1539a89eb2fcc1e0cd3387932f26
         </a>
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
