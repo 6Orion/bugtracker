@@ -1,22 +1,24 @@
-      <div class="table-responsive">     
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Author</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for object in query %}
-            <tr>
-              <td>{{ object.id }}</td>
-              <td><a href="{{ object.get_absolute_url }}">{{ object.name }}</a></td>
-              <td>{{ object.description }}</td>
-              <td>{{ object.author }}</td>
-            </tr>
-            {% endfor %} 
-          </tbody>
-        </table>
-      </div>
+
+      <div class="table-responsive">
+          <!-- Add class="table-bordered" for bordered version -->      
+          <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr class="row d-flex m-0">
+                <th scope="col" class="d-inline-block px-0 col-3 col-sm-1 col-lg-1">ID</th>
+                <th scope="col" class="d-inline-block px-0 col-9 col-sm-2 col-lg-2">Author</th>
+                <th scope="col" class="d-inline-block px-0 col-12 col-sm-9 col-lg-3">Name</th>
+                <th scope="col" class="d-inline-block px-0 col-12 col-lg-6">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for object in query %}
+              <tr class="row d-flex m-0">
+                <th scope="row" class="d-inline-block px-0 col-3 col-sm-1 col-lg-1">{{ object.id }}</th>
+                <td class="d-inline-block px-0 col-9 col-sm-2 col-lg-2"><a href="{{ object.author.get_absolute_url }}">{{ object.author }}</a></td>
+                <td class="d-inline-block px-0 col-12 col-sm-9 col-lg-3"><a href="{{ object.get_absolute_url }}">{{ object.name }}</a></td>
+                <td class="d-inline-block px-0 col-12 col-lg-6">{{ object.description }}</td>
+              </tr>
+              {% endfor %} 
+            </tbody>
+          </table>
+        </div>

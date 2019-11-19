@@ -1,46 +1,44 @@
-    <div class="table-responsive mb-3">
-      <table class="table table-bordered" id="detailTable" width="100%" cellspacing="0">
-        <tbody>
-          <tr>
-            <th>ID:</th>
-            <td>{{ object.id }}</td>
-            <th>Summary:</th>
-            <td colspan="5">{{ object.summary }}</td>
-          </tr>
-          <tr>
-            <th>Author:</th>
-            <td><a href="{{ object.author.get_absolute_url }}">{{ object.author }}</a></td>
-            <th>Project:</th>
-            <td colspan="6"><a href="{{ object.project.get_absolute_url }}">{{ object.project }}</a></td>
+    <dl class="row border border-top-0 mb-3">
+      
+        
+        
+        <dt class="p-2 bg-light border-top col-5 col-sm-2">ID:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-2">{{ object.id }}</dd>
+
+        <dt class="p-2 bg-light border-top col-12 col-sm-3">Summary:</dt>
+        <dd class="p-2 mb-0 border-top col-12 col-sm-5">{{ object.summary }}</dd>
+        
+        <dt class="p-2 bg-light border-top col-5 col-sm-2">Resolution:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-2">{{ object.get_resolution_display }}</dd>
+
+        <dt class="p-2 bg-light border-top col-5 col-sm-3">Project:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-5"><a href="{{ object.project.get_absolute_url }}">{{ object.project }}</a></dd>
             
-          </tr>
-          <tr>
-            <th>Assigned to:</th>
-            <td><a href="{{ object.assigned_to.get_absolute_url }}">{{ object.assigned_to }}</a></td>
-            <th>Category:</th>
-            <td>{{ object.get_category_display }}</td>
-            <th>Priority:</th>
-            <td>{{ object.get_priority_display }}</td>
-            <th>View status:</th>
-            <td>{{ object.get_view_status_display }}</td>
-          </tr>
-          <tr>
-            <th>Resolution:</th>
-            <td>{{ object.get_resolution_display }}</td>
-            <th>Severity:</th>
-            <td>{{ object.get_severity_display }}</td>
-            <th>Created on:</th>
-            <td>{{ object.created_on }}</td>
-            <th>Last updated on:</th>
-            <td>{{ object.updated_on }}</td>
-          </tr> 
-          <tr>
-            <th colspan="8">Description:</td>
-          </tr>    
-          <tr>
-            <td colspan="8">{{ object.description|linebreaks }}</td>
-          </tr> 
-        </tbody>
-      </table>
-    </div>
+        <dt class="p-2 bg-light border-top col-5 col-sm-2">Author:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-2"><a href="{{ object.author.get_absolute_url }}">{{ object.author }}</a></dd>
+
+        <dt class="p-2 bg-light border-top col-5 col-sm-3">Created on:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-5">{{ object.created_on }}</dd>
+
+        <dt class="p-2 bg-light border-top col-5 col-sm-2">Assigned to:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-2"><a href="{{ object.assigned_to.get_absolute_url }}">{{ object.assigned_to }}</a></dd>
+
+        <dt class="p-2 bg-light border-top col-5 col-sm-3">Last updated on:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-5">{{ object.updated_on }}</dd>
+
+        <dt class="p-2 bg-light border-top col-5 col-sm-2">Category:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-2">{{ object.get_category_display }}</dd>
+
+        <dt class="p-2 bg-light border-top col-5 col-sm-3">View status:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-5">{{ object.get_view_status_display }}</dd>
+          
+        <dt class="p-2 bg-light border-top col-5 col-sm-2">Priority:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-2">{{ object.get_priority_display }}</dd>
+
+        <dt class="p-2 bg-light border-top col-5 col-sm-3">Severity:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-5">{{ object.get_severity_display }}</dd>
+        
+        <dt class="p-2 bg-light border-top col-12">Description:</dt>
+        <dd class="p-4 mb-0 border-top col-12">{{ object.description|linebreaks }}</dd>
+    </dl>
     

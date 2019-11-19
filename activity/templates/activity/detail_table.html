@@ -1,39 +1,29 @@
-    <div class="table-responsive mb-3">
-      <table class="table table-bordered" id="detailTable" width="100%" cellspacing="0">
-        <tbody>
-          <tr>
-            <th>ID:</th>
-            <td colspan="2">{{ object.id }}</td>
-          </tr>
-          <tr>
-            <th>Parent bug:</th>
-            <td colspan="2"><a href="/bug/{{ object.bug.id }}">{{ object.bug }}</a></td>
-          </tr>
-          <tr>
-            <th>Project:</th>
-            <td colspan="2"><a href="/project/{{ object.bug.project.id }}">{{ object.bug.project }}</a></td>
-          </tr>
-          <tr>
-            <th>Activity author:</th>
-            <td colspan="2">{{ object.author }}</td>
-          </tr> 
-          <tr>
-            <th>Created on:</th>
-            <td colspan="2">{{ object.created_on }}</td>
-          </tr>
-          <tr>
-            <th>Last updated on:</th>
-            <td colspan="2">{{ object.updated_on }}</td>
-          </tr>
-          <tr>
-            <th>Summary:</th>
-            <td colspan="2">{{ object.summary }}</td>
-          </tr> 
-          <tr>
-            <th>Content:</th>
-            <td colspan="2">{{ object.content|linebreaks }}</td>
-          </tr> 
-        </tbody>
-      </table>
-    </div>
+    <dl class="row border border-top-0 mb-3">   
+        
+            <dt class="p-2 bg-light border-top col-5 col-sm-2">Summary:</dt>
+            <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.summary }}</dd>
+
+            <dt class="p-2 bg-light border-top col-5 col-sm-2">ID:</dt>
+            <dd class="p-2 mb-0 border-top col-7 col-sm-4">{{ object.id }}</dd>
+        
+            <dt class="p-2 bg-light border-top col-5 col-sm-2">Activity author:</dt>
+            <dd class="p-2 mb-0 border-top col-7 col-sm-4"><a href="{{ object.author.get_absolute_url }}">{{ object.author }}</a></dd>
+
+            <dt class="p-2 bg-light border-top col-5 col-sm-2">Parent bug:</dt>
+            <dd class="p-2 mb-0 border-top col-7 col-sm-4"><a href="{{ object.bug.get_absolute_url }}">{{ object.bug }}</a></dd>
+ 
+            <dt class="p-2 bg-light border-top col-5 col-sm-2">Project:</dt>
+            <dd class="p-2 mb-0 border-top col-7 col-sm-4"><a href="{{ object.bug.project.get_absolute_url }}">{{ object.bug.project }}</a></dd>
+        
+            <dt class="p-2 bg-light border-top col-5 col-sm-2">Created on:</dt>
+            <dd class="p-2 mb-0 border-top col-7 col-sm-4">{{ object.created_on }}</dd>
+          
+            <dt class="p-2 bg-light border-top col-5 col-sm-2">Last updated on:</dt>
+            <dd class="p-2 mb-0 border-top col-7 col-sm-4">{{ object.updated_on }}</dd>
+                       
+            <dt class="p-2 bg-light border-top col-12">Content:</dt>
+            <dd class="p-4 mb-0 border-top col-12">{{ object.content|linebreaks }}</dd>
+           
+        
+    </dl>
     
