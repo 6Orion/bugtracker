@@ -1,0 +1,28 @@
+
+        <div class="table-responsive">     
+          <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr class="row d-flex m-0">
+                <th scope="col" class="d-inline-block px-0 col-4 col-lg-1">ID</th>
+                <th scope="col" class="d-none d-md-inline-block px-0 col-8 col-lg-2">Author</th>
+                <th scope="col" class="d-inline-block px-0 col-12 col-lg-9">Title</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for object in query %}
+              <tr class="row d-flex m-0">
+                <th scope="row" class="d-inline-block px-0 col-4 col-lg-1">{{ object.id }}</th>
+                <td class="d-none d-md-inline-block px-0 col-8 col-lg-2">{{ object.author }}</td>
+                <td class="d-inline-block px-0 col-12 col-lg-9"><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></td>
+              </tr>
+              {% endfor %} 
+            </tbody>
+          </table>
+        </div>
+      {% if request.user.is_authenticated and detail %}
+        <a href="/bug/create/{{ object.id }}" class="btn btn-primary btn-circle">
+          <i class="fas fa-plus"></i>
+        </a>
+      {% endif %}
+      
+

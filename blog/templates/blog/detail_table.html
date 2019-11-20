@@ -1,0 +1,27 @@
+<dl class="row border border-top-0 mb-3">   
+    
+    <dt class="p-2 bg-light border-top col-5 col-sm-2">ID:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.id }}</dd>
+
+    <dt class="p-2 bg-light border-top col-5 col-sm-2">Title:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.title }}</dd>
+                
+    <dt class="p-2 bg-light border-top col-5 col-sm-2">Author:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-10"><a href="{{ object.author.get_absolute_url }}">{{ object.author }}</a></dd>
+
+    <dt class="p-2 bg-light border-top col-5 col-sm-2">Timestamp:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.timestamp }}</dd>
+
+    <dt class="p-2 bg-light border-top col-5 col-sm-2">Published:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.published }}</dd>
+
+    <dt class="p-2 bg-light border-top col-5 col-sm-2">Published date:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.published_date }}</dd>
+
+    <dt class="p-2 bg-light border-top col-5 col-sm-2">Updated:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.updated }}</dd>
+    
+    <dt class="p-2 bg-light border-top col-12">Content:</dt>
+    <dd class="p-4 mb-0 border-top col-12">{{ object.content|linebreaks }}</dd>
+
+</dl>

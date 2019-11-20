@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'bug',
     'activity',
     'search',
+    'blog',
 ]
 
 MIDDLEWARE = [
