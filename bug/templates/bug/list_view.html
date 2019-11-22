@@ -25,6 +25,7 @@
             </tbody>
           </table>
         </div>
+      <!-- In case this view is part of project's detailed view -->
       {% if request.user.is_authenticated and detail %}
         <a href="/bug/create/{{ object.id }}" class="btn btn-primary btn-circle">
           <i class="fas fa-plus"></i>

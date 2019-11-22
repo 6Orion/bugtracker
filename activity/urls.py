@@ -9,11 +9,12 @@ from .views import (
 )
 
 urlpatterns = [
+    path("", list_view),
+    
     path("<int:id>/", detail),
     path("<int:id>/edit/", edit),
     path("<int:id>/delete/", delete),
 
     path("create/<int:bug_id>", create),
-
-    path("", list_view),
+    path("create/", create),
 ] 

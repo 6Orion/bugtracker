@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'users.apps.UsersConfig',
+    'django.forms',
     'project',
     'bug',
     'activity',
@@ -87,6 +88,9 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
+
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
+
 
 WSGI_APPLICATION = 'bugtracker.wsgi.application'
 

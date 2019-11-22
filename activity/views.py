@@ -49,29 +49,31 @@ def detail(request, id):
                 "appname_caps": appname_caps,        
                 "page_title": f"{appname_caps} ID {id} - Details",
                 "object": obj,
-
+                "detail": True,
                 }
     return render(request, template, context)
 
 
 @login_required
-def create(request, bug_id):
-    bug = get_object_or_404(Bug, id = bug_id)
+def create(request, bug_id=None):
     form = app_form(request.POST or None)
+
+    if bug_id is not None:
+        bug = Bug.objects.get(id=bug_id)
+        form.initial = {'bug': bug,}
+    
     if form.is_valid():
         obj = form.save(commit=False)
         obj.author = request.user
-        obj.bug = bug
         obj.save()
-        return redirect(f"/bug/{bug_id}")
+        return redirect(f"{obj.get_absolute_url()}")
 
     template = "form.html"
     context = {
                 "appname_lower": appname_lower,
                 "appname_caps": appname_caps,
-                "page_title":f"Add new activity for bug {bug_id}", 
+                "page_title":f"Add new activity", 
                 "form":form, 
-                "bug_id":bug_id,
                 }
     return render(request, template, context)
 
@@ -82,7 +84,7 @@ def edit(request, id):
     form = app_form(request.POST or None, instance = obj)
     if form.is_valid():
         form.save()
-        return redirect(f"/bug/{obj.bug.id}")
+        return redirect(f"{obj.get_absolute_url()}")
     
     template = "form.html"
     context = {
@@ -99,7 +101,7 @@ def delete(request, id):
     obj = get_object_or_404(app_model, id = id)
     if request.method == "POST":
         obj.delete()
-        return redirect(f"/{appname_lower}/{obj.bug.id}")
+        return redirect(f"{obj.bug.get_absolute_url()}")
     
     template = f"{appname_lower}/delete.html"
     context = {

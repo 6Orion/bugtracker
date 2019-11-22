@@ -54,7 +54,6 @@ def create(request):
     if form.is_valid():
         obj = form.save(commit=False)
         obj.author = request.user
-        print(request.user)
         obj.save()
         form = app_form
         return redirect(f"/{appname_lower}/{obj.slug}")

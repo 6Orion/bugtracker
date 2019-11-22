@@ -54,21 +54,8 @@ def detail(request, id):
                 "detail": True, 
                 "page_title": f"{appname_caps} ID {id} - Details", 
                 "object": obj, 
-                "child_list": False,
                 }
     
-    list_query = obj.activities.all()
-    
-    if list_query.count() != 0:
-        context['child_list'] = {
-                                # Lowercase name of the app to be included as a list
-                                "template": "activity/list.html",
-                                # Name/caption of the list
-                                "name": "Activity list",
-                                # Query of child elements
-                                "query": list_query,
-                                 }
-
     return render(request, template, context)
 
 
@@ -119,10 +106,17 @@ def login_view(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-        return redirect("/")
+        return redirect(f"{user.get_absolute_url()}")
     else:
-        # Return an 'invalid login' error message.
-        return redirect("/")
+        template = "form.html"
+        context = {
+                    "appname_lower": appname_lower,
+                    "appname_caps": appname_caps,
+                    "page_title": f"{appname_caps} ID {id} - Edit entry", 
+                    "form": form,
+                    }
+        return render(request, template, context)
+        
 
 
 def logout_view(request):

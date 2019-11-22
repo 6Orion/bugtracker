@@ -46,17 +46,18 @@ def detail(request, id):
                 "child_list": False,
                 }
     
-    list_query = obj.project_bugs.all()
-
-    if list_query.count() != 0:
-        context['child_list'] = {
-                                # Lowercase name of the app to be included as a list
-                                "template": "bug/list.html",
-                                # Name/caption of the list
-                                "name": "Bug list",
-                                # Query of child elements
-                                "query": list_query,
-                                }
+    child_list_query = obj.project_bugs.all()
+    child_list_params = {
+                        # Lowercase name of the app to be included as a list
+                        "template": "bug/list_view.html",
+                        # Name/caption of the list
+                        "name": "Bug list",
+                        # Query of child elements
+                        "query": child_list_query,
+                        }    
+    if not (child_list_query.count() == 0 and request.user.is_authenticated == False):
+        context['child_list'] = child_list_params
+    
     return render(request, template, context)
 
 

@@ -16,5 +16,6 @@ urlpatterns = [
     path("<int:id>/edit/", edit),
     path("<int:id>/delete/", delete),
 
+    path("create/<int:project_id>", create),
     path("create/", create),    
 ] 

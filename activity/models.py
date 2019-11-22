@@ -52,8 +52,8 @@ class Activity(models.Model):
 
 
     def get_edit_url(self):
-        return f"{self.get_absolute_url()}/edit"
+        return f"{self.get_absolute_url()}/edit/"
     
 
     def get_delete_url(self):
-        return f"{self.get_absolute_url()}/delete"
+        return f"{self.get_absolute_url()}/delete/"

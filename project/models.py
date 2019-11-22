@@ -36,9 +36,7 @@ class Project(models.Model):
     # id = models.IntegerField() # pk
     name         = models.CharField(max_length=70)
     description  = models.TextField()
-
     author       = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL, related_name='project_authors')
-
     created_on   = models.DateTimeField(auto_now_add=True)
     updated_on   = models.DateTimeField(auto_now=True)
 
@@ -58,10 +56,10 @@ class Project(models.Model):
 
 
     def get_edit_url(self):
-        return f"{self.get_absolute_url()}/edit"
+        return f"{self.get_absolute_url()}/edit/"
     
 
     def get_delete_url(self):
-        return f"{self.get_absolute_url()}/delete"
+        return f"{self.get_absolute_url()}/delete/"
 
     

@@ -23,7 +23,7 @@
         
             <dt class="p-2 bg-light border-top col-12">Avatar:</dt>
             {% if object.image %}
-            <dd class="p-2 mb-0 border-top col-12"><img src="{{ object.image.url }}" alt="{{ object.username }}'s avatar image"></dd>
+            <dd class="p-2 mb-0 border-top col-12"><img class="img-fluid" src="{{ object.image.url }}" alt="{{ object.username }}'s avatar image"></dd>
             {% else %}
             <dd class="p-2 mb-0 border-top col-12">Please upload your avatar.</dd>
             {% endif %}

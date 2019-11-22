@@ -52,3 +52,26 @@
   </div>
 </div>
 {% endif %}
+
+{% if detail %}
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete entry</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">This action is not reversable. <br>If there are any children entries, they will be deleted too. <br>Are you sure you want to delete this entry? </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <form action="{{ object.get_delete_url }}" method="POST">
+          {% csrf_token %}
+          <button type="submit" value="submit" class="btn btn-danger btn-block">Yes, delete this entry</button> 
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
