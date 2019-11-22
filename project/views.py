@@ -94,7 +94,6 @@ def edit(request, id):
     context = {
                 "appname_lower": appname_lower,
                 "appname_caps": appname_caps,
-                "custom_form_template": True,
                 "page_title": f"{appname_caps} ID {id} - Edit entry", 
                 "form":form,
                 }

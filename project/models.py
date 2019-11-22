@@ -39,6 +39,7 @@ class Project(models.Model):
     author       = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL, related_name='project_authors')
     created_on   = models.DateTimeField(auto_now_add=True)
     updated_on   = models.DateTimeField(auto_now=True)
+    team_members = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='projects')
 
 
     # custom managers

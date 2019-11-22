@@ -108,14 +108,15 @@ def login_view(request):
         login(request, user)
         return redirect(f"{user.get_absolute_url()}")
     else:
-        template = "form.html"
+        """ template = "form.html"
         context = {
                     "appname_lower": appname_lower,
                     "appname_caps": appname_caps,
                     "page_title": f"{appname_caps} ID {id} - Edit entry", 
                     "form": form,
                     }
-        return render(request, template, context)
+        return render(request, template, context) """
+        return redirect("/")
         
 
 
