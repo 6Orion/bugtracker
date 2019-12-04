@@ -14,22 +14,21 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'image')
+        fields = ('username', 'email',)
 
 
 class CustomUserChangeForm(UserChangeForm):
+    password = None
 
     class Meta:
         model = CustomUser
-        fields = ('password', 'first_name', 'last_name', 'email', 'image')
+        fields = ('first_name', 'last_name', 'email', 'image',)
 
         labels = {
             'email': 'E-mail',
             'first_name': 'First name',
             'last_name': 'Last name',
-            'image': 'Avatar image',
-            'password': 'Password',
-            
+            'image': 'Avatar imagee',
         }
 
         widgets = {
@@ -37,5 +36,4 @@ class CustomUserChangeForm(UserChangeForm):
             'first_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your name'}),
             'last_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your surname'}),
             'image': CustomClearableFileInput(attrs={'class':'form-control', 'placeholder':'Your avatar image'}),
-            'password': forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Your password'}),
         }

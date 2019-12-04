@@ -33,8 +33,7 @@ ALLOWED_HOSTS = ['dry-reef-53077.herokuapp.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
+
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -42,11 +41,19 @@ INSTALLED_APPS = [
 
     'users.apps.UsersConfig',
     'django.forms',
+    'crispy_forms',
+    'rest_framework',
+    'corsheaders',
+
     'project',
     'bug',
     'activity',
     'search',
     'blog',
+
+
+    'django.contrib.admin',
+    'django.contrib.auth',
 ]
 
 MIDDLEWARE = [
@@ -58,11 +65,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+)
 
 ROOT_URLCONF = 'bugtracker.urls'
 
-LOGIN_URL = '/login'
+LOGIN_URL = 'users/login'
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
@@ -90,6 +104,8 @@ TEMPLATE_LOADERS = (
 )
 
 FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 WSGI_APPLICATION = 'bugtracker.wsgi.application'

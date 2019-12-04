@@ -16,7 +16,15 @@ class CustomUser(AbstractUser):
     
     def get_edit_url(self):
         return f"{self.get_absolute_url()}/edit/"
+
+    
+    def get_edit_password_url(self):
+        return f"/users/password/"
     
 
     def get_delete_url(self):
         return f"{self.get_absolute_url()}/delete/"
+
+
+    def get_create_url(self):
+        return f"{self.get_absolute_url()}/register/"

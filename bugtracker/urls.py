@@ -35,6 +35,8 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('search/', include('search.urls')),
     path('blog/', include('blog.urls')),
+
+    path('api/bug/', include('bug.api_urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG: # new

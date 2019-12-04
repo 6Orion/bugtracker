@@ -4,6 +4,14 @@
 
     {% load formcss %}
 
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li {% if message.tags %} class="text-{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     <form class="user" method="post" action="." enctype='multipart/form-data'>
             {% csrf_token %}
 
@@ -14,13 +22,18 @@
             {% else %}
 
                 {% for field in form %}
-                <div class="form-group row">
-                    <div class="col-12">
-                    {{ field.label }}
-                    {{ field.errors }}
-                    {{ field }}
+                    <div class="form-group row">
+                        <div class="col-12">
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {% if field.help_text %}
+                                <small class="text-secondary">{{ field.help_text }}</small>
+                            {% endif %}
+                            {% for error in field.errors %}
+                                <p class="text-danger">{{ error }}</p>
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
                 {% endfor %}
 
             {% endif %}

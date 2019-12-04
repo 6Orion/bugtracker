@@ -1,34 +1,39 @@
-    <dl class="row border border-top-0 mb-3">
+{% if messages %}
 
-        
-            <dt class="p-2 bg-light border-top col-5 col-sm-2">ID:</dt>
-            <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.id }}</dd>
-          
-        
-            <dt class="p-2 bg-light border-top col-5 col-sm-2">Name:</dt>
-            <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.first_name }}</dd>
-          
-        
-            <dt class="p-2 bg-light border-top col-5 col-sm-2">Surname:</dt>
-            <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.last_name }}</dd>
-          
-        
-            <dt class="p-2 bg-light border-top col-5 col-sm-2">Username:</dt>
-            <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.username }}</dd>
-          
-        
-            <dt class="p-2 bg-light border-top col-5 col-sm-2">E-mail:</dt>
-            <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.email }}</dd>
-          
-        
-            <dt class="p-2 bg-light border-top col-12">Avatar:</dt>
-            {% if object.image %}
-            <dd class="p-2 mb-0 border-top col-12"><img class="img-fluid" src="{{ object.image.url }}" alt="{{ object.username }}'s avatar image"></dd>
-            {% else %}
-            <dd class="p-2 mb-0 border-top col-12">Please upload your avatar.</dd>
-            {% endif %}
-            
-          
+        {% for message in messages %}
+        <p {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</p>
+        {% endfor %}
 
-    </dl>
-  
+{% endif %}
+
+<dl class="row border border-top-0 m-0 mb-4">
+        
+        <dt class="p-2 bg-light border-top col-5 col-sm-2">ID:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.id }}</dd>
+
+
+        <dt class="p-2 bg-light border-top col-5 col-sm-2">Name:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.first_name }}</dd>
+
+
+        <dt class="p-2 bg-light border-top col-5 col-sm-2">Surname:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.last_name }}</dd>
+
+
+        <dt class="p-2 bg-light border-top col-5 col-sm-2">Username:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.username }}</dd>
+
+
+        <dt class="p-2 bg-light border-top col-5 col-sm-2">E-mail:</dt>
+        <dd class="p-2 mb-0 border-top col-7 col-sm-10">{{ object.email }}</dd>
+
+
+        <dt class="p-2 bg-light border-top col-12">Avatar:</dt>
+        {% if object.image %}
+        <dd class="p-2 mb-0 border-top col-12"><img class="img-fluid" src="{{ object.image.url }}"
+                        alt="{{ object.username }}'s avatar image"></dd>
+        {% else %}
+        <dd class="p-2 mb-0 border-top col-12">Please upload your avatar.</dd>
+        {% endif %}
+
+</dl>

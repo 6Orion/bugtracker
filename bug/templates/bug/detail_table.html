@@ -1,44 +1,43 @@
-    <dl class="row border border-top-0 mb-3">
-      
-        
-        
-        <dt class="p-2 bg-light border-top col-5 col-sm-2">ID:</dt>
-        <dd class="p-2 mb-0 border-top col-7 col-sm-2">{{ object.id }}</dd>
-
-        <dt class="p-2 bg-light border-top col-12 col-sm-3">Summary:</dt>
-        <dd class="p-2 mb-0 border-top col-12 col-sm-5">{{ object.summary }}</dd>
-        
-        <dt class="p-2 bg-light border-top col-5 col-sm-2">Resolution:</dt>
-        <dd class="p-2 mb-0 border-top col-7 col-sm-2">{{ object.get_resolution_display }}</dd>
-
-        <dt class="p-2 bg-light border-top col-5 col-sm-3">Project:</dt>
-        <dd class="p-2 mb-0 border-top col-7 col-sm-5"><a href="{{ object.project.get_absolute_url }}">{{ object.project }}</a></dd>
+<dl class="row border border-top-0 m-0 mb-4">
             
-        <dt class="p-2 bg-light border-top col-5 col-sm-2">Author:</dt>
-        <dd class="p-2 mb-0 border-top col-7 col-sm-2"><a href="{{ object.author.get_absolute_url }}">{{ object.author }}</a></dd>
+    <dt class="p-2 bg-light border-top col-5 col-sm-2">ID:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-2">{{ object.id }}</dd>
 
-        <dt class="p-2 bg-light border-top col-5 col-sm-3">Created on:</dt>
-        <dd class="p-2 mb-0 border-top col-7 col-sm-5">{{ object.created_on }}</dd>
+    <dt class="p-2 bg-light border-top col-12 col-sm-3">Summary:</dt>
+    <dd class="p-2 mb-0 border-top col-12 col-sm-5">{{ object.summary }}</dd>
+    
+    <dt class="p-2 bg-light border-top col-5 col-sm-2">Resolution:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-2">{{ object.get_resolution_display }}</dd>
 
-        <dt class="p-2 bg-light border-top col-5 col-sm-2">Assigned to:</dt>
-        <dd class="p-2 mb-0 border-top col-7 col-sm-2"><a href="{{ object.assigned_to.get_absolute_url }}">{{ object.assigned_to }}</a></dd>
-
-        <dt class="p-2 bg-light border-top col-5 col-sm-3">Last updated on:</dt>
-        <dd class="p-2 mb-0 border-top col-7 col-sm-5">{{ object.updated_on }}</dd>
-
-        <dt class="p-2 bg-light border-top col-5 col-sm-2">Category:</dt>
-        <dd class="p-2 mb-0 border-top col-7 col-sm-2">{{ object.get_category_display }}</dd>
-
-        <dt class="p-2 bg-light border-top col-5 col-sm-3">View status:</dt>
-        <dd class="p-2 mb-0 border-top col-7 col-sm-5">{{ object.get_view_status_display }}</dd>
-          
-        <dt class="p-2 bg-light border-top col-5 col-sm-2">Priority:</dt>
-        <dd class="p-2 mb-0 border-top col-7 col-sm-2">{{ object.get_priority_display }}</dd>
-
-        <dt class="p-2 bg-light border-top col-5 col-sm-3">Severity:</dt>
-        <dd class="p-2 mb-0 border-top col-7 col-sm-5">{{ object.get_severity_display }}</dd>
+    <dt class="p-2 bg-light border-top col-5 col-sm-3">Project:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-5"><a href="{{ object.project.get_absolute_url }}">{{ object.project }}</a></dd>
         
-        <dt class="p-2 bg-light border-top col-12">Description:</dt>
-        <dd class="p-4 mb-0 border-top col-12">{{ object.description|linebreaks }}</dd>
-    </dl>
+    <dt class="p-2 bg-light border-top col-5 col-sm-2">Author:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-2"><a href="{{ object.author.get_absolute_url }}">{{ object.author }}</a></dd>
+
+    <dt class="p-2 bg-light border-top col-5 col-sm-3">Created on:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-5">{{ object.created_on }}</dd>
+
+    <dt class="p-2 bg-light border-top col-5 col-sm-2">Assigned to:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-2"><a href="{{ object.assigned_to.get_absolute_url }}">{{ object.assigned_to }}</a></dd>
+
+    <dt class="p-2 bg-light border-top col-5 col-sm-3">Last updated on:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-5">{{ object.updated_on }}</dd>
+
+    <dt class="p-2 bg-light border-top col-5 col-sm-2">Category:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-2">{{ object.get_category_display }}</dd>
+
+    <dt class="p-2 bg-light border-top col-5 col-sm-3">View status:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-5">{{ object.get_view_status_display }}</dd>
+        
+    <dt class="p-2 bg-light border-top col-5 col-sm-2">Priority:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-2">{{ object.get_priority_display }}</dd>
+
+    <dt class="p-2 bg-light border-top col-5 col-sm-3">Severity:</dt>
+    <dd class="p-2 mb-0 border-top col-7 col-sm-5">{{ object.get_severity_display }}</dd>
+    
+    <dt class="p-2 bg-light border-top col-12">Description:</dt>
+    <dd class="p-4 mb-0 border-top col-12">{{ object.description|linebreaks }}</dd>
+    
+</dl>
     
