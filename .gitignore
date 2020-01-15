@@ -16,6 +16,9 @@ Pipfile.lock
 # Static CDN
 /static_cdn_test/*
 
+# staticfiles
+staticfiles/*
+
 #vscode
 /.vscode/*
 settings.json

@@ -47,6 +47,15 @@ def list_view(request):
 
 def detail(request, id):
     obj = get_object_or_404(app_model, id=id)
+    
+    bugs = obj.author_of_bugs.all()
+    projects = obj.project_authors.all()
+    activities = obj.activities.all()
+
+
+    print(bugs)
+    print(projects)
+    print(activities)
 
     template = "detail.html"
     context = {
@@ -56,7 +65,6 @@ def detail(request, id):
         "page_title": f"{appname_caps} ID {id} - Details",
         "object": obj,
     }
-
     return render(request, template, context)
 
 

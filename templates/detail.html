@@ -1,41 +1,36 @@
-{% extends "base/content.html" %}
-
-{% block content %}
-    
-    {% load formcss %}
-
-    {% include appname_lower|add:"/detail_table.html" %}
-
-{% endblock content %}
+{% extends "base/content.html" %} 
 
 
-{% block controls %}
-  {% if request.user.is_authenticated %}
-  <a href="{{ object.get_edit_url }}" class="btn btn-primary btn-circle">
-    <i class="fa fa-edit"></i>
-  </a>
-  <a href="#" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-circle">
-    <i class="fa fa-trash"></i>
-  </a>
-  {% endif %}
-{% endblock controls %}
+{% block content %} 
+    {% load formcss %} 
+    {% include appname_lower|add:"/detail_table.html" %} 
+{% endblock content %} 
 
 
-{% block list %}
+{% block controls %} 
+    {% if request.user.is_authenticated %}
+    <a href="{{ object.get_edit_url }}" class="btn btn-primary btn-circle">
+        <i class="fa fa-edit"></i>
+    </a>
+    <a href="#" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-circle">
+        <i class="fa fa-trash"></i>
+    </a>
+    {% endif %} 
+{% endblock controls %} 
+
+
+{% block list %}    
     {% if child_list %}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">{{ child_list.name }}</h6>
-        </div>        
+        </div>
         <div class="card-body">
-        
-          <!-- List of child elements -->
-        {% include child_list.template with query=child_list.query %}
 
-      </div>
+            <!-- List of child elements -->
+            {% include child_list.template with query=child_list.query %}
+
+        </div>
     </div>
-    {% endif %}
+    {% endif %} 
 {% endblock list %}
-
-
-
