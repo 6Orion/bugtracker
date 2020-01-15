@@ -18,6 +18,7 @@ Pipfile.lock
 
 # staticfiles
 staticfiles/*
+/staticfiles/*
 
 #vscode
 /.vscode/*
