@@ -173,10 +173,7 @@ STATIC_URL = '/static/'
 
 # LOCAL_STATIC_CDN_PATH = os.path.join(os.path.dirname(BASE_DIR), '..', 'static_cdn_test')
 
- # live cdn AWS S3
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'staticfiles')
-]
+# live cdn AWS S3
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
