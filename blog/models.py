@@ -64,7 +64,7 @@ class BlogPost(models.Model):
         return f"{self.title}"
     
     def get_app_url(self):
-        return f"/blog/"
+        return f"/blog"
 
     def get_absolute_url(self):
         return f"{self.get_app_url()}/{self.slug}"
