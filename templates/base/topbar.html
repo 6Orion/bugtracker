@@ -1,3 +1,5 @@
+{% load static %}
+
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
     <!-- Sidebar Toggle (Topbar) -->
@@ -51,6 +53,8 @@
           <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ request.user.username }}</span>
           {% if request.user.image %}
             <img class="img-profile rounded-circle" src="{{ request.user.image.url }}" width="60px" height="60px">
+          {% else %}
+            <img class="img-profile rounded-circle" src="{% static "/img/undraw_male_avatar_323b.svg" %}" width="60px" height="60px">
           {% endif %}
         </a>
         <!-- Dropdown - User Information -->

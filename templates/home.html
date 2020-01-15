@@ -1,11 +1,111 @@
 {% extends "list.html" %}
 
+{% load static %}
+
 {% block heading %}
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">{{ page_heading }}</h1>
+    
+    <div class="row mb-4">
+        
 
-    <p class="mb-4">Welcome to BugTracker dashboard. If you find some bugs *ba-dum-tssss* or wish to contact me, please find my contact details <a target="_blank" href="http://igorpavlovic.com">here</a>.</p>
+        <div class="col-12 col-md-7 col-xl-8">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Introduction</h6>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Welcome to BugTracker dashboard. If you find some bugs *ba-dum-tssss* or wish to contact me, please find my contact details <a target="_blank" href="http://igorpavlovic.com">here</a>.<br>
+                        This project is a part of simple portfolio demonstrating here elementary CRUD functionalities, user authentication system and basic HTML/CSS template adaptation.
+                    </p>
+                    <p class="mb-4">Site was developed in Python (Django 2.2) and deployed on Heroku. Template that was used for the site is <a target='_blank' href="https://startbootstrap.com/previews/sb-admin-2/">SB Admin 2</a></p>
+                </div> 
+            </div>
+        </div>
+        <div class="col-12 col-md-5 col-xl-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Imagery</h6>
+                </div>        
+                <div class="card-body">
+                    <img class="img-fluid" src="{% static "/img/undraw_code_review_l1q9.svg" %}">
+                </div>  
+            </div>
+        </div>
 
+    </div>    
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total bugs</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ total_bugs }}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Open bugs</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ open_bugs }}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-fw fa-bug fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Closed bugs</div>
+                    <div class="row no-gutters align-items-center">
+                      <div class="col-auto">
+                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ percentage }}%</div>
+                      </div>
+                      <div class="col">
+                        <div class="progress progress-sm mr-2">
+                          <div class="progress-bar bg-info" role="progressbar" style="width: {{ percentage }}%" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Activities</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ activities }}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fafw fa-tools fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
 {% endblock heading %}
 
 
