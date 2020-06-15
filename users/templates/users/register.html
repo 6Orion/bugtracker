@@ -1,5 +1,6 @@
-{% extends "base/content.html" %} {% load crispy_forms_tags %} {% block content
-%}
+{% extends "base/content.html" %} 
+{% load crispy_forms_tags %} 
+{% block content %}
 <h4 class="card-title">Register new user</h4>
 <form method="post">
   {% csrf_token %} {{ form|crispy }}
