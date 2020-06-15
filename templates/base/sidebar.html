@@ -1,33 +1,39 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
-
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-      <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-shield-alt"></i>
-      </div>
-      <div class="sidebar-brand-text mx-3">BugTracker</div>
-    </a>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-      <a class="nav-link" href="/">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-      Interface
+<ul
+  class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled"
+  id="accordionSidebar"
+>
+  <!-- Sidebar - Brand -->
+  <a
+    class="sidebar-brand d-flex align-items-center justify-content-center"
+    href="/"
+  >
+    <div class="sidebar-brand-icon rotate-n-15">
+      <i class="fas fa-shield-alt"></i>
     </div>
+    <div class="sidebar-brand-text mx-3">BugTracker</div>
+  </a>
 
-    <!-- Nav Item - Project Collapse Menu -->
-    <!-- <li class="nav-item active">
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0" />
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item">
+    <a class="nav-link" href="/">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Dashboard</span></a
+    >
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider" />
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Interface
+  </div>
+
+  <!-- Nav Item - Project Collapse Menu -->
+  <!-- <li class="nav-item active">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlog" aria-expanded="true" aria-controls="collapseBlog">
         <i class="fas fa-blog"></i>
         <span>Blog</span>
@@ -41,59 +47,104 @@
       </div>
     </li> -->
 
-    <!-- Nav Item - Project Collapse Menu -->
-    <li class="nav-item active">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProjects" aria-expanded="true" aria-controls="collapseProjects">
-        <i class="fas fa-fw fa-code-branch"></i>
-        <span>Projects</span>
-      </a>
-      <div id="collapseProjects" class="collapse" aria-labelledby="headingProjects" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Options:</h6>
-          <a class="collapse-item active" href="/project/">List all projects</a>
-          <a class="collapse-item" href="/project/create/">Add new project</a>
-        </div>
+  <!-- Nav Item - Project Collapse Menu -->
+  <li class="nav-item active">
+    <a
+      class="nav-link collapsed"
+      href="#"
+      data-toggle="collapse"
+      data-target="#collapseProjects"
+      aria-expanded="true"
+      aria-controls="collapseProjects"
+    >
+      <i class="fas fa-fw fa-code-branch"></i>
+      <span>Projects</span>
+    </a>
+    <div
+      id="collapseProjects"
+      class="collapse"
+      aria-labelledby="headingProjects"
+      data-parent="#accordionSidebar"
+    >
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Options:</h6>
+        <a class="collapse-item active" href="/project/">List all projects</a>
+        {% if request.user.is_authenticated %}
+        <a class="collapse-item" href="/project/create/">Add new project</a>
+        {% else %}
+        <a class="collapse-item" href="/users/register">Add new project</a>
+        {% endif %}
       </div>
-    </li>
-
-    <!-- Nav Item - Bugs Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBugs" aria-expanded="true" aria-controls="collapseBugs">
-        <i class="fas fa-fw fa-bug"></i>
-        <span>Bugs</span>
-      </a>
-      <div id="collapseBugs" class="collapse" aria-labelledby="headingBugs" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Options:</h6>
-          <a class="collapse-item" href="/bug/">List all bugs</a>
-          <a class="collapse-item" href="/bug/create/">Add new bug</a>
-        </div>
-      </div>
-    </li>
-
-    <!-- Nav Item - Activities Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseActivities" aria-expanded="true" aria-controls="collapseActivities">
-        <i class="fas fa-fw fa-tools"></i>
-        <span>Activities</span>
-      </a>
-      <div id="collapseActivities" class="collapse" aria-labelledby="headingActivities" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Options:</h6>
-          <a class="collapse-item" href="/activity/">List all activities</a>
-          <a class="collapse-item" href="/activity/create">Add new activity</a>
-        </div>
-      </div>
-    </li>
-
-    
-
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-      <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
+  </li>
 
-  </ul>
+  <!-- Nav Item - Bugs Collapse Menu -->
+  <li class="nav-item">
+    <a
+      class="nav-link collapsed"
+      href="#"
+      data-toggle="collapse"
+      data-target="#collapseBugs"
+      aria-expanded="true"
+      aria-controls="collapseBugs"
+    >
+      <i class="fas fa-fw fa-bug"></i>
+      <span>Bugs</span>
+    </a>
+    <div
+      id="collapseBugs"
+      class="collapse"
+      aria-labelledby="headingBugs"
+      data-parent="#accordionSidebar"
+    >
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Options:</h6>
+        <a class="collapse-item" href="/bug/">List all bugs</a>
+        {% if request.user.is_authenticated %}
+        <a class="collapse-item" href="/bug/create/">Add new bug</a>
+        {% else %}
+        <a class="collapse-item" href="/users/register">Add new bug</a>
+        {% endif %}
+      </div>
+    </div>
+  </li>
+
+  <!-- Nav Item - Activities Collapse Menu -->
+  <li class="nav-item">
+    <a
+      class="nav-link collapsed"
+      href="#"
+      data-toggle="collapse"
+      data-target="#collapseActivities"
+      aria-expanded="true"
+      aria-controls="collapseActivities"
+    >
+      <i class="fas fa-fw fa-tools"></i>
+      <span>Activities</span>
+    </a>
+    <div
+      id="collapseActivities"
+      class="collapse"
+      aria-labelledby="headingActivities"
+      data-parent="#accordionSidebar"
+    >
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Options:</h6>
+        <a class="collapse-item" href="/activity/">List all activities</a>
+        {% if request.user.is_authenticated %}
+        <a class="collapse-item" href="/activity/create">Add new activity</a>
+        {% else %}
+        <a class="collapse-item" href="/users/register">Add new activity</a>
+        {% endif %}
+      </div>
+    </div>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider d-none d-md-block" />
+
+  <!-- Sidebar Toggler (Sidebar) -->
+  <div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+  </div>
+</ul>
